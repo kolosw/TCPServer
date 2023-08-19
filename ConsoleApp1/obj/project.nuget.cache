@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "K6PlXhxs2PsLUDZ9kdHB8M925S6+oXmsLOGfLTzRrBgJ8wJARQ2MNVxyNRpxUcxHqJViMWqrUwYQmDKk+mUtqg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Jekos\\source\\repos\\ConsoleApp1\\ConsoleApp1\\TCPApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jekos\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

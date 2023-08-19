@@ -26,17 +26,17 @@ namespace TCPApp
             tcpListener.Start();
             while (true)
             {
-                TcpClient tcpClient = tcpListener.AcceptTcpClient();
+                TcpClient tcpClient = tcpListener.AcceptTcpClient();    //Создание листенера
                 var stream = tcpClient.GetStream();
                 byte[] buffer = new byte[1024];
-                stream.Read(buffer);
-                string json = Encoding.UTF8.GetString(buffer);
-                packet a = JsonConvert.DeserializeObject<packet>(json);
-                a.str1 += "_CHANGED";
+                stream.Read(buffer);    //Чтение потока байт от клиента
+                string json = Encoding.UTF8.GetString(buffer);   //Десериализация из потока байт в json
+                packet a = JsonConvert.DeserializeObject<packet>(json);    //Десериализация из json в объект
+                a.str1 += "_CHANGED";   //Изменение свойств пакета
                 a.ser *= 2;
-                json = JsonConvert.SerializeObject(a);
-                buffer = Encoding.UTF8.GetBytes(json);
-                stream.Write(buffer, 0, buffer.Length);
+                json = JsonConvert.SerializeObject(a);   //Сериализация пакета в json
+                buffer = Encoding.UTF8.GetBytes(json);   //Сериализцаия json в поток байт
+                stream.Write(buffer, 0, buffer.Length);  //Отправка измененного пакета клиенту
             }
         }
     }

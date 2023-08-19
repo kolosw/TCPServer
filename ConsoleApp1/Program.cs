@@ -4,7 +4,21 @@ using System.Net.Sockets;
 using System.Text;
 using Packet;
 using System.Numerics;
+//namespace Packet  //Используется такая структура в качестве пакета
+//{
+//    [Serializable]
+//    public struct packet
+//    {
+//        public int ser { get; set; }
 
+//        [JsonIgnore]
+//        public int nonser { get; set; }
+//        [JsonIgnore]
+//        public string str { get; set; }
+
+//        public string str1 { get; set; }
+//    }
+//}
 namespace TCPApp
 {
 
@@ -13,7 +27,7 @@ namespace TCPApp
     {
         public static void Main(string[] args)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);  //Поддержка кириллицы в консоли
             Console.OutputEncoding = Encoding.GetEncoding(866);
             Console.InputEncoding = Encoding.GetEncoding(866);
             TCPServer server = new TCPServer();
@@ -28,7 +42,7 @@ namespace TCPApp
                         {
                             if (!ServerIsUp)
                             {
-                                server.start();
+                                server.start();    //Запуск сервера
                                 ServerIsUp = true;
                             }
                             else
@@ -38,7 +52,7 @@ namespace TCPApp
                     case "2":
                         if (ServerIsUp)
                         {
-                            packet b = TCPClient.Send(CreatePacket(),TCPServer.address,TCPServer.port);
+                            packet b = TCPClient.Send(CreatePacket(),TCPServer.address,TCPServer.port);    //Создание и отправка покета на сервер
                             Console.WriteLine();
                             Console.WriteLine("Полученный пакет:");
                             Console.WriteLine("Сериализуемое число:" + b.ser + " Сериализуемая строка:" + b.str1 +
@@ -56,7 +70,7 @@ namespace TCPApp
                 }
             }
         }
-        public static packet CreatePacket()
+        public static packet CreatePacket()    //Создание и заполнение пакета
         {
             
             packet pack = new packet();
